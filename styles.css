@@ -37,6 +37,34 @@ header {
     z-index: 1000;
 }
 
+/* Botón hamburguesa (por defecto oculto, se muestra en móvil) */
+.hamburger {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 10px 12px;
+    color: #fff;
+}
+.hamburger-box{ display:inline-block; width:24px; height:18px; position:relative }
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after{
+    background:#fff;
+    width:24px;
+    height:2px;
+    display:block;
+    position:absolute;
+    left:0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.hamburger-inner{ top:50%; transform:translateY(-50%); }
+.hamburger-inner::before{ content:''; top:-8px }
+.hamburger-inner::after{ content:''; top:8px }
+header.nav-open .hamburger-inner{ transform: rotate(45deg); }
+header.nav-open .hamburger-inner::before{ transform: rotate(-90deg); top:0 }
+header.nav-open .hamburger-inner::after{ opacity: 0 }
+
 
 
 /* Navegación */
@@ -136,9 +164,44 @@ main{  background-color: #000000; }
 
 @media (max-width: 768px) {
 
+    /* mostrar botón hamburguesa */
+    .hamburger { display: block; }
+
+    nav {
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    /* por defecto ocultamos el listado y lo mostramos cuando el header tenga .nav-open */
     nav ul {
+        list-style: none;
+        display: none;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    header.nav-open nav ul {
+        display: flex;
+    }
+
+    nav li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav a,
+    nav .a_hijo,
+    nav #a_nav {
+        display: block;
+        padding: 10px 14px;
+        width: auto;
+        text-align: center;
     }
 
     main {

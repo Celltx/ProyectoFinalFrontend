@@ -53,16 +53,14 @@ label{
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.inputs:hover{
-    border: 2px solid rgba(146, 73, 73, 0.5);
-    
-}
+
 .inputs{
     padding: 10px;
     border-radius: 5px;
     border: 2px solid rgba(255, 0, 0, 0.5);
     font-size: 16px;
     background-color: black;
+    color: white;
 }
  h1 {
         animation: flotar 2s ease-in-out infinite;

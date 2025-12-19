@@ -11,7 +11,10 @@
 </head>
 <body>
     <header class="fixed-menu">
-        <nav>
+        <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+        </button>
+        <nav id="primary-navigation">
             <ul>
                 <li><a id="a_nav" href="Registro.html">Registrarme</a></li>
                 <li><a id="a_nav" href="#">So High?</a></li>
@@ -188,5 +191,32 @@
             <p>© Celeste Monroy</p>
         </div>
     </footer>
+</body>
+<script>
+    (function(){
+        const header = document.querySelector('header.fixed-menu');
+        const btn = header.querySelector('.hamburger');
+        const nav = document.getElementById('primary-navigation');
+        if(!btn || !nav) return;
+        btn.addEventListener('click', function(){
+            const open = header.classList.toggle('nav-open');
+            btn.setAttribute('aria-expanded', open);
+        });
+        // cerrar al pulsar un enlace (modo móvil)
+        nav.addEventListener('click', function(e){
+            if(e.target.tagName === 'A' && header.classList.contains('nav-open')){
+                header.classList.remove('nav-open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+        // cerrar con escape
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape' && header.classList.contains('nav-open')){
+                header.classList.remove('nav-open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    })();
+</script>
 </body>
 </html>
