@@ -12,6 +12,27 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+.back-arrow{
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 8px;
+    text-decoration: none;
+}
+.back-arrow svg{ display:block }
+.back-arrow:hover{ background: rgba(255,255,255,0.06) }
+.back-arrow:active{ transform: translateY(1px) }
+
+@media (max-width: 520px){
+    .back-arrow{ top: 12px; left: 12px; width:36px; height:36px }
+}
 .registro-form{
     background-color: rgb(0, 0, 0);
     display: flex;
